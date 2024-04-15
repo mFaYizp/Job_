@@ -16,20 +16,20 @@ const useFetch = (endpoint, query) => {
       "X-RapidAPI-Key": rapidApiKey,
       "X-RapidAPI-Host": "jsearch.p.rapidapi.com",
     },
-    params: {
-      ...query,
-    },
+    params: { ...query },
   };
 
   const fetchData = async () => {
     setIsLoading(true);
+
     try {
       const response = await axios.request(options);
+
       setData(response.data.data);
       setIsLoading(false);
     } catch (error) {
       setError(error);
-      alert("There is an error");
+      console.log(error);
     } finally {
       setIsLoading(false);
     }
